@@ -7,6 +7,6 @@
 ## Summary
 
 - [Autenticação](./dist/auth.html)
-- [Validação de documentos](./dist/doc-validation.html)
+- [Validação de documentos](./dist/api.html)
 
 > Note: This documentation is auto generated, no PRs accepted
