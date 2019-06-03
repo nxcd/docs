@@ -22,6 +22,18 @@
       height: 100px;
       margin-left: 150px;
     }
+
+    .base-urls {
+      margin-bottom: 20px;
+    }
+
+    .base-urls ul {
+      margin-bottom: 10px;
+    }
+
+    .base-urls h4 {
+      margin-bottom: 10px !important;
+    }
   </style>
 </head>
 
@@ -29,7 +41,20 @@
   <main class="has-text-centered">
     <a href="https://nxcd.com.br" target="_blank"><img src="./assets/nextcode.svg" alt="Nextcode logo" class="logo"></a>
     <h1 class="title is-1">Nextcode Documentation</h1>
-    <ul class="is-flex">
+    <div class="base-urls">
+      <h3 class="title is-3">URLs base</h3>
+      <h4 class="title is-4">Produção</h4>
+      <ul>
+        <li>API: <strong>nxcd.app</strong></li>
+        <li>Autenticação: <strong>auth.nxcd.app</strong></li>
+      </ul>
+      <h4 class="title is-4">Homologação</h4>
+      <ul>
+        <li>API: <strong>staging.nxcd.app</strong></li>
+        <li>Autenticação: <strong>auth-staging.nxcd.app</strong></li>
+      </ul>
+    </div>
+    <ul class=" is-flex">
       <li><a class="button is-primary is-large" href="./dist/api.html" target="_blank">API documentation</a></li>
       <li><a class="button is-info is-large" href="./dist/auth.html" target="_blank">Auth API</a></li>
     </ul>
