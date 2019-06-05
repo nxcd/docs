@@ -9,13 +9,13 @@
 <p>O fluxo de autenticação segue os seguintes passos:</p>
 <ol>
 <li>
-<p>O usuário realiza o login através <a href="https://nxcd.github.io/docs/dist/auth.html#users-obter-id_token">da api de login</a></p>
+<p>O usuário realiza o login através <a href="https://nxcd.github.io/docs/dist/auth.html#users-obter-id_token">da api de autenticação</a></p>
 </li>
 <li>
 <p>Esta API retornará um <strong>ID Token</strong>, este token contem apenas a informação do usuário e <strong>NÃO</strong> pode ser usado para realizar chamadas na API</p>
 </li>
 <li>
-<p>Com o <strong>ID token</strong> em mãos, faça uma requisição para a <a href="https://nxcd.github.io/docs/dist/auth.html#users-obter-auth_token">api de sessões</a> utilizando o <strong>ID Token</strong> como <em>Bearer Token</em> no cabeçalho <code>Authorization</code> da requisição</p>
+<p>Com o <strong>ID token</strong> em mãos, faça uma requisição para a <a href="https://nxcd.github.io/docs/dist/auth.html#users-obter-auth_token">api de autorização</a> utilizando o <strong>ID Token</strong> como <em>Bearer Token</em> no cabeçalho <code>Authorization</code> da requisição</p>
 </li>
 <li>
 <p>A API irá retornar um <strong>AuthToken</strong> que <strong>PODE</strong> ser usado para acessar as APIs de consumo</p>
@@ -146,7 +146,8 @@ Eles são criados pela Nextcode estão ligados à estrutura de permissionamento 
   "<span class="hljs-attribute">authToken</span>": <span class="hljs-value"><span class="hljs-string">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ijk3OjZjOjVlOjk0OjhiOjdhOjI2OmY2OjQ2OjNjOmRkOmJkOjBjOjNiOmVhOjhmIn0.eyJzY29wZSI6Im1zLWF1dGg6YXBwczpjcmVhdGUgbXMtYXV0aDp1c2VyczpjcmVhdGUgbXMtYXV0aDpwcm9maWxlczpjcmVhdGUgbXMtYXV0aDpjbGllbnRzOmNyZWF0ZSIsImdyYW50cyI6eyJtcy1hdXRoIjpbImFwcHM6Y3JlYXRlIiwidXNlcnM6Y3JlYXRlIiwicHJvZmlsZXM6Y3JlYXRlIiwiY2xpZW50czpjcmVhdGUiXX0sImlhdCI6MTU1MzgwMTI3NCwiZXhwIjoxNTUzODA0ODc0LCJhdWQiOiJueGNkIiwiaXNzIjoibnhjZC1hdXRoIiwic3ViIjoidXJuOnVzZXI6NWM5NTQ1MGU1NWMwYmQwYjRiMGQxZmViIn0.u7c9tn4YUgyrkp3_OMF7KSN2bGGZimv-SCIh2ahyfsk"</span>
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>401</code></strong></div></div></div></section><section id="users" class="resource-group"><h2 class="group-heading">Users <a href="#users" class="permalink">&para;</a></h2><p>Usuários são a entidade de autenticação da API. Eles são criados e suas permissões são definidas pela Nextcode.</p>
 <p>Um usuário possui um login e senha que são utilizados para gerar um token de autenticação, que é, então, utilizado para obter um token de autorização, contendo as permissões daquele usuário.</p>
-<div id="users-obter-id_token" class="resource"><h3 class="resource-heading">Obter id_token <a href="#users-obter-id_token" class="permalink">&nbsp;&para;</a></h3><div id="users-obter-id_token-post" class="action post"><h4 class="action-heading"><div class="name">Obter id_token</div><a href="#users-obter-id_token-post" class="method post">POST</a><code class="uri">/login</code></h4><p>Autentica um usuário através de login e senha. Recebe um <strong>ID Token</strong> que deve ser utilizado no cabeçalho <code>Authorization</code> da <a href="https://nxcd.github.io/docs/dist/auth.html#users-obter-auth_token">api de autenticação</a></p>
+<div id="users-obter-id_token" class="resource"><h3 class="resource-heading">Obter id_token <a href="#users-obter-id_token" class="permalink">&nbsp;&para;</a></h3><div id="users-obter-id_token-post" class="action post"><h4 class="action-heading"><div class="name">Obter id_token</div><a href="#users-obter-id_token-post" class="method post">POST</a><code class="uri">/login</code></h4><p>Autentica um usuário através de login e senha. Recebe um <strong>ID Token</strong> que deve ser utilizado no cabeçalho <code>Authorization</code> da <a href="https://nxcd.github.io/docs/dist/auth.html#users-obter-auth_token">api de autorização</a></p>
+<p>O token tem duração de 1 hora.</p>
 <blockquote>
 <p>Este token <strong>NÃO</strong> pode ser utilizado como token de autenticação para consumir APIs</p>
 </blockquote>
@@ -161,7 +162,7 @@ Eles são criados pela Nextcode estão ligados à estrutura de permissionamento 
     "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"unauthorized"</span></span>,
     "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"incorrect login or password"</span>
   </span>}
-</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div><div id="users-obter-auth_token" class="resource"><h3 class="resource-heading">Obter auth_token <a href="#users-obter-auth_token" class="permalink">&nbsp;&para;</a></h3><div id="users-obter-auth_token-post" class="action post"><h4 class="action-heading"><div class="name">Obter auth_token</div><a href="#users-obter-auth_token-post" class="method post">POST</a><code class="uri">/users/sessions</code></h4><p>Gera um token de autenticação contendo as permissões do usuário a partir de um <strong>ID Token</strong> gerado na <a href="https://nxcd.github.io/docs/dist/auth.html#users-obter-id_token">api de autorização</a>.</p>
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div><div id="users-obter-auth_token" class="resource"><h3 class="resource-heading">Obter auth_token <a href="#users-obter-auth_token" class="permalink">&nbsp;&para;</a></h3><div id="users-obter-auth_token-post" class="action post"><h4 class="action-heading"><div class="name">Obter auth_token</div><a href="#users-obter-auth_token-post" class="method post">POST</a><code class="uri">/users/sessions</code></h4><p>Gera um token de autorização contendo as permissões do usuário a partir de um <strong>ID Token</strong> gerado na <a href="https://nxcd.github.io/docs/dist/auth.html#users-obter-id_token">api de autenticação</a>.</p>
 <p>O token tem duração de 1 hora e precisa ser renovado ao expirar refazendo o fluxo de autenticação.</p>
 <blockquote>
 <p>Este token <strong>PODE</strong> ser utilizado para as APIs de consumo</p>
